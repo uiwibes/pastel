@@ -140,6 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
         
+        // Update font family based on language
+        if (lang === 'fa') {
+            document.body.style.fontFamily = 'Vazirmatn, Poppins, sans-serif';
+        } else {
+            document.body.style.fontFamily = 'Poppins, sans-serif';
+        }
+        
         const elements = document.querySelectorAll('[data-translate]');
         elements.forEach(element => {
             const key = element.getAttribute('data-translate');

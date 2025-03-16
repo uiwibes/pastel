@@ -17,6 +17,8 @@ const translations = {
         rainbowBox: "Rainbow Delight Box",
         luxurySet: "Luxury Gift Set",
         miniBundle: "Mini Treats Bundle",
+        seasonalSpecial: "Seasonal Special Collection",
+        customDesign: "Custom Design Box",
         addToCart: "Add to Cart",
         handmadeDaily: "Handmade Daily",
         freshDelicious: "Fresh and delicious",
@@ -26,7 +28,9 @@ const translations = {
         nationwideShipping: "Nationwide shipping",
         quickLinks: "Quick Links",
         connectWithUs: "Connect With Us",
-        allRightsReserved: "All rights reserved."
+        allRightsReserved: "All rights reserved.",
+        ourStoryTitle: "Our Story",
+        ourStoryText: "Sweet Pastel Dreams creates artisanal marshmallows and treats that bring joy and sweetness to your life."
     },
     fa: {
         home: "خانه",
@@ -46,6 +50,8 @@ const translations = {
         rainbowBox: "جعبه رنگین‌کمان",
         luxurySet: "ست لوکس",
         miniBundle: "بسته شیرینی‌های کوچک",
+        seasonalSpecial: "مجموعه ویژه فصلی",
+        customDesign: "جعبه طراحی سفارشی",
         addToCart: "افزودن به سبد",
         handmadeDaily: "ساخت روزانه",
         freshDelicious: "تازه و خوشمزه",
@@ -55,7 +61,9 @@ const translations = {
         nationwideShipping: "ارسال به سراسر کشور",
         quickLinks: "لینک‌های سریع",
         connectWithUs: "با ما در ارتباط باشید",
-        allRightsReserved: "تمامی حقوق محفوظ است."
+        allRightsReserved: "تمامی حقوق محفوظ است.",
+        ourStoryTitle: "داستان ما",
+        ourStoryText: "رویاهای پاستلی شیرین، مارشمالوها و شیرینی‌های دست‌ساز را خلق می‌کند که شادی و شیرینی را به زندگی شما می‌آورد."
     },
     tr: {
         home: "Ana Sayfa",
@@ -75,6 +83,8 @@ const translations = {
         rainbowBox: "Gökkuşağı Kutusu",
         luxurySet: "Lüks Set",
         miniBundle: "Mini Tatlı Paketi",
+        seasonalSpecial: "Mevsimlik Özel Koleksiyon",
+        customDesign: "Özel Tasarım Kutusu",
         addToCart: "Sepete Ekle",
         handmadeDaily: "Her Gün El Yapımı",
         freshDelicious: "Taze ve lezzetli",
@@ -84,6 +94,8 @@ const translations = {
         nationwideShipping: "Tüm yurda gönderim",
         quickLinks: "Hızlı Bağlantılar",
         connectWithUs: "Bize Ulaşın",
-        allRightsReserved: "Tüm hakları saklıdır."
+        allRightsReserved: "Tüm hakları saklıdır.",
+        ourStoryTitle: "Hikayemiz",
+        ourStoryText: "Sweet Pastel Dreams, hayatınıza neşe ve tatlılık getiren el yapımı marşmelovlar ve tatlılar üretir."
     }
 }; 

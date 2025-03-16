@@ -44,46 +44,102 @@ nav {
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 1rem;
 }
 
 .logo-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
-    border-radius: 50%;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
-    overflow: hidden;
+    animation: bounce 2s infinite;
 }
 
 .logo-icon::before {
-    content: '🍡';
-    font-size: 24px;
-    transform: rotate(0deg);
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform: rotate(45deg);
+    animation: wiggle 3s infinite;
 }
 
 .logo-icon::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.2) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, 0.2) 50%,
-        rgba(255, 255, 255, 0.2) 75%,
-        transparent 75%
-    );
-    animation: shimmer 3s linear infinite;
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform: rotate(-45deg);
+    animation: wiggle 3s infinite reverse;
+}
+
+.logo-icon .cupcake {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFFFFF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
+    animation: rotate 4s infinite linear;
+}
+
+.logo-icon .sprinkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    animation: sprinkle 2s infinite;
+}
+
+.logo-icon .sprinkle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+.logo-icon .sprinkle:nth-child(2) { top: 30%; right: 20%; animation-delay: 0.2s; }
+.logo-icon .sprinkle:nth-child(3) { bottom: 30%; left: 30%; animation-delay: 0.4s; }
+.logo-icon .sprinkle:nth-child(4) { bottom: 20%; right: 30%; animation-delay: 0.6s; }
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(45deg) scale(1);
+    }
+    50% {
+        transform: rotate(45deg) scale(1.1);
+    }
+}
+
+@keyframes sprinkle {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-3px) rotate(180deg);
+        opacity: 0.8;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 .logo h1 {
@@ -93,15 +149,6 @@ nav {
     -webkit-text-fill-color: transparent;
     font-weight: 600;
     letter-spacing: 0.5px;
-}
-
-@keyframes shimmer {
-    0% {
-        transform: rotate(0) scale(1.5);
-    }
-    100% {
-        transform: rotate(360deg) scale(1.5);
-    }
 }
 
 .nav-links a {
@@ -144,9 +191,87 @@ nav {
     padding: 0.5rem;
 }
 
+/* RTL and Persian Font Support */
 [dir="rtl"] {
+    font-family: 'Vazirmatn', 'Poppins', sans-serif !important;
     text-align: right;
-    font-family: 'Poppins', sans-serif, 'Vazirmatn';
+}
+
+[dir="rtl"] * {
+    font-family: 'Vazirmatn', 'Poppins', sans-serif !important;
+}
+
+/* Preserve Font Awesome icons in RTL */
+[dir="rtl"] .fas,
+[dir="rtl"] .fab,
+[dir="rtl"] .far,
+[dir="rtl"] .fa {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+}
+
+[dir="rtl"] .fab {
+    font-family: "Font Awesome 6 Brands" !important;
+}
+
+[dir="rtl"] .far {
+    font-weight: 400 !important;
+}
+
+[dir="rtl"] .nav-links {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-controls {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .slider-arrow.prev {
+    right: 20px;
+    left: auto;
+}
+
+[dir="rtl"] .slider-arrow.next {
+    left: 20px;
+    right: auto;
+}
+
+[dir="rtl"] .product-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .features {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-content {
+    direction: rtl;
+}
+
+[dir="rtl"] .social-icons {
+    direction: rtl;
+}
+
+[dir="rtl"] .cart-count {
+    left: -8px;
+    right: auto;
+}
+
+[dir="rtl"] .logo {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .logo-icon {
+    margin-left: 0;
+    margin-right: 12px;
+}
+
+[dir="rtl"] .language-selector {
+    direction: rtl;
+}
+
+[dir="rtl"] .language-selector option {
+    text-align: right;
 }
 
 .cart-icon {
@@ -571,4 +696,117 @@ footer {
     .hero h2 {
         font-size: 2rem;
     }
+}
+
+.logo-icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #fff;
+    z-index: 1;
+    animation: rotate 4s infinite linear;
+}
+
+.logo-icon .sprinkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    animation: sprinkle 2s infinite;
+}
+
+.logo-icon .sprinkle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+.logo-icon .sprinkle:nth-child(2) { top: 30%; right: 20%; animation-delay: 0.2s; }
+.logo-icon .sprinkle:nth-child(3) { bottom: 30%; left: 30%; animation-delay: 0.4s; }
+.logo-icon .sprinkle:nth-child(4) { bottom: 20%; right: 30%; animation-delay: 0.6s; }
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Background Sweets */
+.sweet1, .sweet2, .sweet3, .sweet4 {
+    position: fixed;
+    font-size: 120px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.03;
+}
+
+.sweet1 {
+    content: '🍬';
+    top: 5%;
+    left: 5%;
+    animation: spiral1 40s infinite linear;
+}
+
+.sweet2 {
+    content: '🍪';
+    top: 5%;
+    right: 5%;
+    animation: spiral2 45s infinite linear;
+}
+
+.sweet3 {
+    content: '🍫';
+    bottom: 5%;
+    left: 5%;
+    animation: spiral3 50s infinite linear;
+}
+
+.sweet4 {
+    content: '🍭';
+    bottom: 5%;
+    right: 5%;
+    animation: spiral4 55s infinite linear;
+}
+
+@keyframes spiral1 {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(calc(100vw - 200px), 0); }
+    50% { transform: translate(calc(100vw - 200px), calc(100vh - 200px)); }
+    75% { transform: translate(0, calc(100vh - 200px)); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes spiral2 {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(0, calc(100vh - 200px)); }
+    50% { transform: translate(calc(-100vw + 200px), calc(100vh - 200px)); }
+    75% { transform: translate(calc(-100vw + 200px), 0); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes spiral3 {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(calc(-100vw + 200px), 0); }
+    50% { transform: translate(calc(-100vw + 200px), calc(-100vh + 200px)); }
+    75% { transform: translate(0, calc(-100vh + 200px)); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes spiral4 {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(0, calc(-100vh + 200px)); }
+    50% { transform: translate(calc(100vw - 200px), calc(-100vh + 200px)); }
+    75% { transform: translate(calc(100vw - 200px), 0); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Remove the old body::before and body::after styles */
+body::before, body::after {
+    display: none;
+}
+
+/* Remove the old floating sweets section */
+.floating-sweets {
+    display: none;
 } 
